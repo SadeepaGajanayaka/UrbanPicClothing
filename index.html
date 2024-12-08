@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanPick Clothing Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=McLaren&display=swap" rel="stylesheet">
+ 
+ <style>
+    /* Reset styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Global styles */
+    body {
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: #333;
+      background-color: #f8f8f8;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .btn {
+        font-family: "Poppins", sans-serif;
+      display: inline-block;
+      background: linear-gradient(45deg, #504A49, #000000);
+      color: #fff;
+      padding: 0.75rem 4rem;
+      border-radius: 30px;
+      font-weight: 200;
+      font-size: 1rem;
+      transition: all 0.5s ease-in-out;
+      border: 1px solid transparent;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #000000, #504A49);
+      color: white;
+    }
+    .btn-product{
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+      display: inline-block;
+      background-color:rgb(255, 255, 255);
+      color: #000000;
+      margin-bottom: 1rem;
+      padding: 0.75rem 4rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      transition: all 0.5s ease-in-out;
+      border: 1px solid transparent;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      border: #000000 1px solid;
+
+
+    }
+    .btn-product:hover {
+        font-weight: 300;
+      transform: scale(1.1);
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+    }
+
+    /* Header styles */
+    header {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* animation: fadeIn 2s ease-in; */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    
+
+    header .logo img {
+      margin-left: 10px;
+      height: 40px;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    header nav ul li a {
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    header nav ul li a:hover {
+      color: #b8b8b8;
+      border-bottom: 2px solid #ffffff;
+      padding-bottom: 2px;
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('pexels-bohlemedia-1884583.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 100vh;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      animation: slideIn 1.5s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      background-color: #fff;
+      text-transform: uppercase;
+     
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    /* Products Section */
+    #products {
+      padding: 4rem 2rem;
+      background: linear-gradient(to bottom, #fff, #f0f0f0);
+      text-align: center;
+    }
+
+    #products h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: #504A49;
+      position: relative;
+    }
+
+    #products h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #000000;
+      margin: 10px auto;
+    }
+
+    .product-container {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      flex-basis: calc(33.333% - 2rem);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product h3 {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .product .btn {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Feedback Section */
+    .feedback {
+      padding: 4rem 2rem;
+      background:#a0a0a0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        align-items: center;
+    }
+    .feedback-content{
+        text-align: left;
+    }
+
+    .feedback h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    .feedback p {
+        font-size: 1rem;
+        color: #eeeeee;
+        margin-bottom: 2rem;
+    }
+
+    .feedback form {
+      max-width: 600px;
+      /* margin: 0 auto; */
+      display: grid;
+      gap: 1rem;
+      /* animation: fadeIn 1.5s ease-in-out; */
+    }
+
+    .feedback input,
+    .feedback textarea {
+    width: 100%;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      background-color: #fff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .feedback input:focus,
+    .feedback textarea:focus {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      border-color: #000000;
+    }
+    .feedback button{
+        margin-top: 1rem;
+    }
+    .feedback img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .feedback {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .feedback-image img {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background-color: #000000;
+      color: white;
+      padding: 2rem;
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    footer .social-icons {
+      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    footer .social-icons a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    /* footer .social-icons a:hover {
+      color: #DDA631;
+    } */
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <div class="urbantext" style="font-family: 'McLaren', serif;
+          font-weight: 400;
+          font-style: normal;">Urban</div><div class="picktext" style="font-family: '[z] Arista Light';">Pick</div>
+          <img src="icons8-cart-90.png" alt="Cart Icon">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <main>
+        <section class="hero">
+          <div class="hero-content">
+            <h1>Welcome to UrbanPick Clothing Store </h1>
+            <p>Discover your style with our exclusive collections. Perfect for every occasion.</p>
+            <a href="#products" class="btn">Start Shopping</a>
+          </div>
+        </section>
+    
+        <section id="products">
+          <h2>Our Collections</h2>
+          <div class="product-container">
+            <div class="product">
+              <img src="DALL·E 2024-12-07 23.34.26 - A minimalistic T-shirt design for a website shop item, set against a plain white background. The T-shirt is neatly displayed flat, with a clean and mo.webp" alt="Men's Collection">
+              <h3>Men's Collection</h3>
+              <button class="btn-product">Browse</button>
+            </div>
+            <div class="product">
+              <img src="DALL·E 2024-12-07 23.41.03 - A minimalistic blouse design for a website shop item, set against a plain white background. The blouse is neatly displayed flat, featuring a clean and.webp" alt="Women's Collection">
+              <h3>Women's Collection</h3>
+              <button class="btn-product">Browse</button>
+            </div>
+            <div class="product">
+              <img src="DALL·E 2024-12-07 23.44.41 - A minimalistic saree design displayed for a website shop item. The saree is neatly folded and arranged on a hanger, with elegant and subtle textures v.webp" alt="Sarees">
+              <h3>Elegant Sarees</h3>
+              <button class="btn-product">Browse</button>
+            </div>
+          </div>
+        </section>
+    
+        <section class="feedback">
+            <div class="feedback-content">
+          <h2>We Value Your Feedback</h2>
+          <p>Share your thoughts and help us improve
+          </p>
+          <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit" class="btn">Submit</button>
+          </form></div>
+          <div class="feedback-image">
+         <img src="vecteezy_3d-male-character-presenting-to-the-right_24785792.png" alt="feedbackpeople" width="350px">
+        </div></section>
+      </main>
+    
+      <footer>
+        &copy; 2024 UrbanPick. All rights reserved.
+      </footer>
+</body>
+</html>
